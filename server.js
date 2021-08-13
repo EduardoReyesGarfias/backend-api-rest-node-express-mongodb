@@ -1,5 +1,5 @@
 const express = require ('express');
-
+const initDB = require('./config/db');
 const app = express();
 
 const port = 3001;
@@ -24,3 +24,6 @@ app.use(itemsRouters);
 app.listen(port, () =>{
     console.log('Aplicacion corriendo');
 })
+
+
+initDB();
