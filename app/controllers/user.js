@@ -1,11 +1,5 @@
 const model = require('../models/user');
 
-const optionsPaginate = {
-    page: 1,
-    limit: 2
-}
-
-
 /**
  * Get data form BD
  * @param {http peticion} req 
@@ -20,6 +14,14 @@ exports.getData = (req, res) =>{
         })
     });
     */
+
+    let optionsPaginate = {
+        page: 1,
+        limit: 2
+    }
+
+    optionsPaginate.page = req.query.page;
+    optionsPaginate.limit = req.query.limit;
     
     // Get con paginacion
     model.paginate( {}, optionsPaginate, (err, docs) =>{
