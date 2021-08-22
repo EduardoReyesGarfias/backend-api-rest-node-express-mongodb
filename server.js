@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 const userRouters = require('./app/routes/user');
 const itemsRouters = require('./app/routes/items');
 
+app.use(express.urlencoded({ extended:true}))
 
 app.use(userRouters);
 app.use(itemsRouters);

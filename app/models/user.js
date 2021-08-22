@@ -11,9 +11,13 @@ const UserSchema = new mongoose.Schema(
         },
         email: {
             type: String,
-            unique: string,
+            unique: true,
             required: true
         }
+    },
+    {
+        versionKey: false,
+        timestamps: true
     }
 )
 

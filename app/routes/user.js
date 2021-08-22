@@ -6,6 +6,9 @@ const controller = require('../controllers/user');
 
 const path = 'user';
 
+// Recibir 
 router.get( `/${path}`,  controller.getData);
+
+router.post( `/${path}`,  controller.insertData);
 
 module.exports = router;
