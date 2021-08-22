@@ -1,4 +1,14 @@
+const { ObjectId } = require('mongodb');
 const model = require('../models/user');
+
+/**
+ * Transforma de string a ObjectId de monogo
+ * @param {string} id 
+ * @returns id in type ObjectId
+ */
+const parseId = id =>{
+    return ObjectId(id);
+}
 
 /**
  * Get data form BD
@@ -32,7 +42,7 @@ exports.getData = (req, res) =>{
 };
 
 /**
- * INsert data in BD
+ * Insert data in BD
  * @param {http peticion} req 
  * @param {http response} res 
  */
@@ -47,4 +57,24 @@ exports.insertData = (req, res) =>{
         else 
             res.send({ data: docs });
     });
+}
+
+/**
+ * Update single row
+ * @param {http request} req 
+ * @param {http response} res 
+ */
+exports.updateSingle = (req, res) =>{
+
+    const id = req.params._id;
+    const dataUpdate = req.body;
+    
+    model.updateOne(
+        { _id: parseId(id)},
+        dataUpdate,
+        (err, docs) =>{
+            res.send( {items : docs} );
+        }
+    );
+    
 }
