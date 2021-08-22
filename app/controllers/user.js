@@ -78,3 +78,21 @@ exports.updateSingle = (req, res) =>{
     );
     
 }
+
+/**
+ * Delete single row
+ * @param {http request} req 
+ * @param {http response} res 
+ */
+exports.deleteSingle = (req, res) =>{
+
+    const id = req.params._id;
+    
+    model.deleteOne(
+        { _id: parseId(id) },
+        (err, docs) =>{
+            res.send({ items: docs });
+        }
+    );
+
+}
