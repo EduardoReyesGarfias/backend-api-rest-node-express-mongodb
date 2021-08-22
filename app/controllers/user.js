@@ -1,5 +1,10 @@
 const model = require('../models/user');
 
+const optionsPaginate = {
+    page: 1,
+    limit: 2
+}
+
 
 /**
  * Get data form BD
@@ -7,11 +12,20 @@ const model = require('../models/user');
  * @param {http response} res 
  */
 exports.getData = (req, res) =>{
-    //res.send({data: 'Esto viene desde ruta del controlador'})
+    // Get normal
+    /*
     model.find({},(err, docs) =>{
         res.send({
             docs:docs
         })
+    });
+    */
+    
+    // Get con paginacion
+    model.paginate( {}, optionsPaginate, (err, docs) =>{
+
+        res.send( { data: docs } )
+
     });
 };
 

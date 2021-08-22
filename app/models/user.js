@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+// Libreria para poder paginar
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const UserSchema = new mongoose.Schema(
     {
@@ -20,5 +22,8 @@ const UserSchema = new mongoose.Schema(
         timestamps: true
     }
 )
+
+// Inidcar que en la coleccion queremos paginar
+UserSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('user', UserSchema);
